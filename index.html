@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таймер до ЕГЭ</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        .timer {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>ДНЕЙ ДО СМЕРТИ</h1>
+    <div class="timer">
+        <h3>Дней до ЕГЭ по русскому</h3>
+        <h1 id="russian"></h1>
+    </div>
+    <div class="timer">
+        <h3>Дней до ЕГЭ по математике</h3>
+        <h1 id="math"></h1>
+    </div>
+    <div class="timer">
+        <h3>Дней до ЕГЭ по информатике</h3>
+        <h1 id="informatics"></h1>
+    </div>
+    <div class="timer">
+        <h3>Дней до ЕГЭ по физике</h3>
+        <h1 id="physics"></h1>
+    </div>
+
+    <script>
+        function countdown(date, elementId) {
+            const targetDate = new Date(date).getTime();
+            const timer = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+                document.getElementById(elementId).innerText = days;
+
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById(elementId).innerText = "Экзамен уже прошел";
+                }
+            }, 1000);
+        }
+
+        countdown('June 11, 2025', 'informatics');
+        countdown('June 2, 2025', 'physics');
+        countdown('May 30, 2025', 'russian');
+        countdown('May 27, 2025', 'math');
+    </script>
+</body>
+</html>
