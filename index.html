@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-    <h1>ДНЕЙ ДО СМЕРТИ</h1>
+    <h1>ДНЕЙ ДО ЭКЗАМЕНОВ</h1>
     <div class="timer">
         <h3>Дней до ЕГЭ по русскому</h3>
         <h1 id="russian"></h1>
@@ -35,6 +35,14 @@
         <h3>Дней до ЕГЭ по физике</h3>
         <h1 id="physics"></h1>
     </div>
+    <div class="timer">
+        <h3>Дней до ЕГЭ по биологии</h3>
+        <h1 id="biology"></h1>
+    </div>
+    <div class="timer">
+        <h3>Дней до ЕГЭ по химии</h3>
+        <h1 id="chemistry"></h1>
+    </div>
 
     <script>
         function countdown(date, elementId) {
@@ -48,7 +56,7 @@
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                document.getElementById(elementId).innerText = `${seconds}с ${minutes}м ${hours}ч ${days}д`;
+                document.getElementById(elementId).innerText = `${days}д ${hours}ч ${minutes}м ${seconds}с`;
 
                 if (distance < 0) {
                     clearInterval(timer);
@@ -61,6 +69,8 @@
         countdown('June 2, 2025', 'physics');
         countdown('May 30, 2025', 'russian');
         countdown('May 27, 2025', 'math');
+        countdown('June 5, 2025', 'biology');
+        countdown('May 23, 2025', 'chemistry');
     </script>
 </body>
 </html>
